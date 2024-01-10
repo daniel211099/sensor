@@ -1,0 +1,55 @@
+# STM32CubeIDE
+.settings/
+.project
+.cproject
+.ctproject
+RTE/
+SW4STM32/
+
+# Compiled Output
+build/
+Debug/
+Release/
+
+# Debug files (GDB, OpenOCD, etc.)
+Debug/
+*.su
+
+# CMake
+CMakeFiles/
+CMakeScripts/
+CMakeCache.txt
+CMakeSettings.json
+
+# Libraries
+Lib/
+Libraries/
+
+# Generated files
+cmake_install.cmake
+CMakeCache.txt
+cmake-build-debug/
+cmake-build-release/
+
+# Various settings
+*.opendb
+*.launch
+*.pyc
+*.pyo
+*.suo
+*.user
+*.sln.docstates
+
+# Package Files #
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# Logs and databases
+*.log
+*.sqlite
