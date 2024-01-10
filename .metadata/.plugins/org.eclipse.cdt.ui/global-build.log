@@ -1,0 +1,696 @@
+14:16:53 **** Incremental Build of configuration Debug for project sensor-sw-kc ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/kommunikation/interface_receive_handler.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/kommunikation/interface_receive_handler.d" -MT"Core/Src/kommunikation/interface_receive_handler.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/kommunikation/interface_receive_handler.o"
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+In file included from ../Core/Src/kommunikation/interface_receive_handler.c:9:
+../Core/Inc/kommunikation/interface_receive_handler.h:15:9: error: expected '=', ',', ';', 'asm' or '__attribute__' before string constant
+   15 | include "stm32f3xx_hal_uart.h"
+      |         ^~~~~~~~~~~~~~~~~~~~~~
+../Core/Inc/kommunikation/interface_receive_handler.h:26:3: warning: data definition has no type or storage class
+   26 | } InterfaceReceiveHandler;
+      |   ^~~~~~~~~~~~~~~~~~~~~~~
+../Core/Inc/kommunikation/interface_receive_handler.h:26:3: warning: type defaults to 'int' in declaration of 'InterfaceReceiveHandler' [-Wimplicit-int]
+In file included from ../Core/Src/main.c:25:
+../Core/Inc/kommunikation/interface_receive_handler.h:15:9: error: expected '=', ',', ';', 'asm' or '__attribute__' before string constant
+   15 | include "stm32f3xx_hal_uart.h"
+      |         ^~~~~~~~~~~~~~~~~~~~~~
+../Core/Inc/kommunikation/interface_receive_handler.h:26:3: warning: data definition has no type or storage class
+   26 | } InterfaceReceiveHandler;
+      |   ^~~~~~~~~~~~~~~~~~~~~~~
+../Core/Inc/kommunikation/interface_receive_handler.h:26:3: warning: type defaults to 'int' in declaration of 'InterfaceReceiveHandler' [-Wimplicit-int]
+../Core/Inc/kommunikation/interface_receive_handler.h:29:1: error: unknown type name 'InterfaceReceiveHandler'
+   29 | InterfaceReceiveHandler createInterfaceReceiveHandler(Sensor* sensor,
+      | ^~~~~~~~~~~~~~~~~~~~~~~
+../Core/Inc/kommunikation/interface_receive_handler.h:47:30: error: expected declaration specifiers or '...' before 'InterfaceReceiveHandler'
+   47 | void processInterfaceMessage(InterfaceReceiveHandler* handler,uint8_t* receivedData, uint8_t receivedDataIndex);
+      |                              ^~~~~~~~~~~~~~~~~~~~~~~
+../Core/Inc/kommunikation/interface_receive_handler.h:29:1: error: unknown type name 'InterfaceReceiveHandler'
+   29 | InterfaceReceiveHandler createInterfaceReceiveHandler(Sensor* sensor,
+      | ^~~~~~~~~~~~~~~~~~~~~~~
+../Core/Inc/kommunikation/interface_receive_handler.h:47:30: error: expected declaration specifiers or '...' before 'InterfaceReceiveHandler'
+   47 | void processInterfaceMessage(InterfaceReceiveHandler* handler,uint8_t* receivedData, uint8_t receivedDataIndex);
+      |                              ^~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:55:1: error: unknown type name 'InterfaceReceiveHandler'
+   55 | InterfaceReceiveHandler reciever;
+      | ^~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:129:19: warning: implicit declaration of function 'processInterfaceMessage' [-Wimplicit-function-declaration]
+  129 |                   processInterfaceMessage(&reciever, uartData.data.receivedData, uartData.data.dataIndex);
+      |                   ^~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c: In function 'sendDiameterPeriodic':
+../Core/Src/main.c:275:40: error: 'huart1' undeclared (first use in this function); did you mean 'huart2'?
+  275 |         sender.interface.sendDiameter(&huart1,sensor.getDiameter(&sensor));
+      |                                        ^~~~~~
+      |                                        huart2
+../Core/Src/main.c:275:40: note: each undeclared identifier is reported only once for each function it appears in
+make: *** [Core/Src/subdir.mk:34: Core/Src/main.o] Error 1
+make: *** Waiting for unfinished jobs....
+../Core/Src/kommunikation/interface_receive_handler.c:17:1: error: unknown type name 'InterfaceReceiveHandler'
+   17 | InterfaceReceiveHandler gHandler;
+      | ^~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/kommunikation/interface_receive_handler.c:34:1: error: unknown type name 'InterfaceReceiveHandler'
+   34 | InterfaceReceiveHandler createInterfaceReceiveHandler(Sensor* sensor,
+      | ^~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/kommunikation/interface_receive_handler.c: In function 'createInterfaceReceiveHandler':
+../Core/Src/kommunikation/interface_receive_handler.c:40:5: warning: statement with no effect [-Wunused-value]
+   40 |     InterfaceReceiveHandler handler;
+      |     ^~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/kommunikation/interface_receive_handler.c:40:28: error: expected ';' before 'handler'
+   40 |     InterfaceReceiveHandler handler;
+      |                            ^~~~~~~~
+      |                            ;
+../Core/Src/kommunikation/interface_receive_handler.c:41:5: error: 'handler' undeclared (first use in this function); did you mean 'gHandler'?
+   41 |     handler.sensor = sensor;
+      |     ^~~~~~~
+      |     gHandler
+../Core/Src/kommunikation/interface_receive_handler.c:41:5: note: each undeclared identifier is reported only once for each function it appears in
+../Core/Src/kommunikation/interface_receive_handler.c: In function 'handleFreqChange':
+../Core/Src/kommunikation/interface_receive_handler.c:67:25: error: request for member 'sensor' in something not a structure or union
+   67 |                 gHandler.sensor->setFrequency(gHandler.sensor,frequency);
+      |                         ^
+../Core/Src/kommunikation/interface_receive_handler.c:67:55: error: request for member 'sensor' in something not a structure or union
+   67 |                 gHandler.sensor->setFrequency(gHandler.sensor,frequency);
+      |                                                       ^
+../Core/Src/kommunikation/interface_receive_handler.c:68:21: error: request for member 'sender' in something not a structure or union
+   68 |             gHandler.sender->interface.sendFrequency(gHandler.uart3, frequency);
+      |                     ^
+../Core/Src/kommunikation/interface_receive_handler.c:68:62: error: request for member 'uart3' in something not a structure or union
+   68 |             gHandler.sender->interface.sendFrequency(gHandler.uart3, frequency);
+      |                                                              ^
+../Core/Src/kommunikation/interface_receive_handler.c: In function 'calculate_Periode':
+../Core/Src/kommunikation/interface_receive_handler.c:76:35: error: request for member 'htim3' in something not a structure or union
+   76 |         HAL_TIM_Base_Stop(gHandler.htim3);
+      |                                   ^
+../Core/Src/kommunikation/interface_receive_handler.c:79:34: error: request for member 'htim3' in something not a structure or union
+   79 |     uint32_t prescaler = gHandler.htim3->Init.Prescaler;
+      |                                  ^
+../Core/Src/kommunikation/interface_receive_handler.c:88:13: error: request for member 'htim3' in something not a structure or union
+   88 |     gHandler.htim3->Init.Period = periode;
+      |             ^
+../Core/Src/kommunikation/interface_receive_handler.c:91:35: error: request for member 'htim3' in something not a structure or union
+   91 |         HAL_TIM_Base_Init(gHandler.htim3);
+      |                                   ^
+../Core/Src/kommunikation/interface_receive_handler.c:92:35: error: request for member 'htim3' in something not a structure or union
+   92 |     HAL_TIM_Base_Start_IT(gHandler.htim3);
+      |                                   ^
+../Core/Src/kommunikation/interface_receive_handler.c: In function 'handleFreq':
+../Core/Src/kommunikation/interface_receive_handler.c:96:17: error: request for member 'sender' in something not a structure or union
+   96 |         gHandler.sender->interface.sendFrequency(gHandler.uart3, gHandler.sensor->getFrequency(gHandler.sensor));
+      |                 ^
+../Core/Src/kommunikation/interface_receive_handler.c:96:58: error: request for member 'uart3' in something not a structure or union
+   96 |         gHandler.sender->interface.sendFrequency(gHandler.uart3, gHandler.sensor->getFrequency(gHandler.sensor));
+      |                                                          ^
+../Core/Src/kommunikation/interface_receive_handler.c:96:74: error: request for member 'sensor' in something not a structure or union
+   96 |         gHandler.sender->interface.sendFrequency(gHandler.uart3, gHandler.sensor->getFrequency(gHandler.sensor));
+      |                                                                          ^
+../Core/Src/kommunikation/interface_receive_handler.c:96:104: error: request for member 'sensor' in something not a structure or union
+   96 |         gHandler.sender->interface.sendFrequency(gHandler.uart3, gHandler.sensor->getFrequency(gHandler.sensor));
+      |                                                                                                        ^
+../Core/Src/kommunikation/interface_receive_handler.c: In function 'handleCurve':
+../Core/Src/kommunikation/interface_receive_handler.c:100:17: error: request for member 'sender' in something not a structure or union
+  100 |         gHandler.sender->interface.sendCurve(gHandler.uart3, gHandler.sensor->getCurve(gHandler.sensor));
+      |                 ^
+../Core/Src/kommunikation/interface_receive_handler.c:100:54: error: request for member 'uart3' in something not a structure or union
+  100 |         gHandler.sender->interface.sendCurve(gHandler.uart3, gHandler.sensor->getCurve(gHandler.sensor));
+      |                                                      ^
+../Core/Src/kommunikation/interface_receive_handler.c:100:70: error: request for member 'sensor' in something not a structure or union
+  100 |         gHandler.sender->interface.sendCurve(gHandler.uart3, gHandler.sensor->getCurve(gHandler.sensor));
+      |                                                                      ^
+../Core/Src/kommunikation/interface_receive_handler.c:100:96: error: request for member 'sensor' in something not a structure or union
+  100 |         gHandler.sender->interface.sendCurve(gHandler.uart3, gHandler.sensor->getCurve(gHandler.sensor));
+      |                                                                                                ^
+../Core/Src/kommunikation/interface_receive_handler.c: In function 'handleSN':
+../Core/Src/kommunikation/interface_receive_handler.c:104:17: error: request for member 'sender' in something not a structure or union
+  104 |         gHandler.sender->interface.sendSN(gHandler.uart3, gHandler.sensor->getID(gHandler.sensor));
+      |                 ^
+../Core/Src/kommunikation/interface_receive_handler.c:104:51: error: request for member 'uart3' in something not a structure or union
+  104 |         gHandler.sender->interface.sendSN(gHandler.uart3, gHandler.sensor->getID(gHandler.sensor));
+      |                                                   ^
+../Core/Src/kommunikation/interface_receive_handler.c:104:67: error: request for member 'sensor' in something not a structure or union
+  104 |         gHandler.sender->interface.sendSN(gHandler.uart3, gHandler.sensor->getID(gHandler.sensor));
+      |                                                                   ^
+../Core/Src/kommunikation/interface_receive_handler.c:104:90: error: request for member 'sensor' in something not a structure or union
+  104 |         gHandler.sender->interface.sendSN(gHandler.uart3, gHandler.sensor->getID(gHandler.sensor));
+      |                                                                                          ^
+../Core/Src/kommunikation/interface_receive_handler.c: In function 'handleType':
+../Core/Src/kommunikation/interface_receive_handler.c:108:17: error: request for member 'sender' in something not a structure or union
+  108 |         gHandler.sender->interface.sendType(gHandler.uart3, gHandler.sensor->getType(gHandler.sensor));
+      |                 ^
+../Core/Src/kommunikation/interface_receive_handler.c:108:53: error: request for member 'uart3' in something not a structure or union
+  108 |         gHandler.sender->interface.sendType(gHandler.uart3, gHandler.sensor->getType(gHandler.sensor));
+      |                                                     ^
+../Core/Src/kommunikation/interface_receive_handler.c:108:69: error: request for member 'sensor' in something not a structure or union
+  108 |         gHandler.sender->interface.sendType(gHandler.uart3, gHandler.sensor->getType(gHandler.sensor));
+      |                                                                     ^
+../Core/Src/kommunikation/interface_receive_handler.c:108:94: error: request for member 'sensor' in something not a structure or union
+  108 |         gHandler.sender->interface.sendType(gHandler.uart3, gHandler.sensor->getType(gHandler.sensor));
+      |                                                                                              ^
+../Core/Src/kommunikation/interface_receive_handler.c: In function 'handleSetCurve':
+../Core/Src/kommunikation/interface_receive_handler.c:121:15: warning: unused variable 'param' [-Wunused-variable]
+  121 |         float param = 0.0;
+      |               ^~~~~
+../Core/Src/kommunikation/interface_receive_handler.c:146:17: error: request for member 'sensor' in something not a structure or union
+  146 |     if (gHandler.sensor != NULL && gHandler.sensor->setCurve != NULL) {
+      |                 ^
+../Core/Src/kommunikation/interface_receive_handler.c:146:44: error: request for member 'sensor' in something not a structure or union
+  146 |     if (gHandler.sensor != NULL && gHandler.sensor->setCurve != NULL) {
+      |                                            ^
+../Core/Src/kommunikation/interface_receive_handler.c:147:17: error: request for member 'sensor' in something not a structure or union
+  147 |         gHandler.sensor->setCurve(gHandler.sensor, curve);
+      |                 ^
+../Core/Src/kommunikation/interface_receive_handler.c:147:43: error: request for member 'sensor' in something not a structure or union
+  147 |         gHandler.sensor->setCurve(gHandler.sensor, curve);
+      |                                           ^
+../Core/Src/kommunikation/interface_receive_handler.c: At top level:
+../Core/Src/kommunikation/interface_receive_handler.c:162:30: error: expected declaration specifiers or '...' before 'InterfaceReceiveHandler'
+  162 | void processInterfaceMessage(InterfaceReceiveHandler* handler,uint8_t* receivedData, uint8_t receivedDataIndex){
+      |                              ^~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/kommunikation/interface_receive_handler.c: In function 'createInterfaceReceiveHandler':
+../Core/Src/kommunikation/interface_receive_handler.c:53:1: warning: control reaches end of non-void function [-Wreturn-type]
+   53 | }
+      | ^
+make: *** [Core/Src/kommunikation/subdir.mk:25: Core/Src/kommunikation/interface_receive_handler.o] Error 1
+"make -j16 all" terminated with exit code 2. Build might be incomplete.
+14:17:20 **** Incremental Build of configuration Debug for project sensor-sw-kc ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/kommunikation/interface_receive_handler.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/kommunikation/interface_receive_handler.d" -MT"Core/Src/kommunikation/interface_receive_handler.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/kommunikation/interface_receive_handler.o"
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+In file included from ../Core/Src/kommunikation/interface_receive_handler.c:9:
+../Core/Inc/kommunikation/interface_receive_handler.h:15:9: error: expected '=', ',', ';', 'asm' or '__attribute__' before string constant
+   15 | include "stm32f3xx_hal_uart.h"
+      |         ^~~~~~~~~~~~~~~~~~~~~~
+In file included from ../Core/Src/main.c:25:
+../Core/Inc/kommunikation/interface_receive_handler.h:15:9: error: expected '=', ',', ';', 'asm' or '__attribute__' before string constant
+   15 | include "stm32f3xx_hal_uart.h"
+      |         ^~~~~~~~~~~~~~~~~~~~~~
+../Core/Inc/kommunikation/interface_receive_handler.h:26:3: warning: data definition has no type or storage class
+   26 | } InterfaceReceiveHandler;
+      |   ^~~~~~~~~~~~~~~~~~~~~~~
+../Core/Inc/kommunikation/interface_receive_handler.h:26:3: warning: data definition has no type or storage class
+   26 | } InterfaceReceiveHandler;
+      |   ^~~~~~~~~~~~~~~~~~~~~~~
+../Core/Inc/kommunikation/interface_receive_handler.h:26:3: warning: type defaults to 'int' in declaration of 'InterfaceReceiveHandler' [-Wimplicit-int]
+../Core/Inc/kommunikation/interface_receive_handler.h:26:3: warning: type defaults to 'int' in declaration of 'InterfaceReceiveHandler' [-Wimplicit-int]
+../Core/Inc/kommunikation/interface_receive_handler.h:29:1: error: unknown type name 'InterfaceReceiveHandler'
+   29 | InterfaceReceiveHandler createInterfaceReceiveHandler(Sensor* sensor,
+      | ^~~~~~~~~~~~~~~~~~~~~~~
+../Core/Inc/kommunikation/interface_receive_handler.h:47:30: error: expected declaration specifiers or '...' before 'InterfaceReceiveHandler'
+   47 | void processInterfaceMessage(InterfaceReceiveHandler* handler,uint8_t* receivedData, uint8_t receivedDataIndex);
+      |                              ^~~~~~~~~~~~~~~~~~~~~~~
+../Core/Inc/kommunikation/interface_receive_handler.h:29:1: error: unknown type name 'InterfaceReceiveHandler'
+   29 | InterfaceReceiveHandler createInterfaceReceiveHandler(Sensor* sensor,
+      | ^~~~~~~~~~~~~~~~~~~~~~~
+../Core/Inc/kommunikation/interface_receive_handler.h:47:30: error: expected declaration specifiers or '...' before 'InterfaceReceiveHandler'
+   47 | void processInterfaceMessage(InterfaceReceiveHandler* handler,uint8_t* receivedData, uint8_t receivedDataIndex);
+      |                              ^~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:55:1: error: unknown type name 'InterfaceReceiveHandler'
+   55 | InterfaceReceiveHandler reciever;
+      | ^~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:129:19: warning: implicit declaration of function 'processInterfaceMessage' [-Wimplicit-function-declaration]
+  129 |                   processInterfaceMessage(&reciever, uartData.data.receivedData, uartData.data.dataIndex);
+      |                   ^~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c: In function 'sendDiameterPeriodic':
+../Core/Src/main.c:275:40: error: 'huart1' undeclared (first use in this function); did you mean 'huart2'?
+  275 |         sender.interface.sendDiameter(&huart1,sensor.getDiameter(&sensor));
+      |                                        ^~~~~~
+      |                                        huart2
+../Core/Src/main.c:275:40: note: each undeclared identifier is reported only once for each function it appears in
+../Core/Src/kommunikation/interface_receive_handler.c:17:1: error: unknown type name 'InterfaceReceiveHandler'
+   17 | InterfaceReceiveHandler gHandler;
+      | ^~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/kommunikation/interface_receive_handler.c:34:1: error: unknown type name 'InterfaceReceiveHandler'
+   34 | InterfaceReceiveHandler createInterfaceReceiveHandler(Sensor* sensor,
+      | ^~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/kommunikation/interface_receive_handler.c: In function 'createInterfaceReceiveHandler':
+../Core/Src/kommunikation/interface_receive_handler.c:40:5: warning: statement with no effect [-Wunused-value]
+   40 |     InterfaceReceiveHandler handler;
+      |     ^~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/kommunikation/interface_receive_handler.c:40:28: error: expected ';' before 'handler'
+   40 |     InterfaceReceiveHandler handler;
+      |                            ^~~~~~~~
+      |                            ;
+../Core/Src/kommunikation/interface_receive_handler.c:41:5: error: 'handler' undeclared (first use in this function); did you mean 'gHandler'?
+   41 |     handler.sensor = sensor;
+      |     ^~~~~~~
+      |     gHandler
+../Core/Src/kommunikation/interface_receive_handler.c:41:5: note: each undeclared identifier is reported only once for each function it appears in
+../Core/Src/kommunikation/interface_receive_handler.c: In function 'handleFreqChange':
+../Core/Src/kommunikation/interface_receive_handler.c:67:25: error: request for member 'sensor' in something not a structure or union
+   67 |                 gHandler.sensor->setFrequency(gHandler.sensor,frequency);
+      |                         ^
+../Core/Src/kommunikation/interface_receive_handler.c:67:55: error: request for member 'sensor' in something not a structure or union
+   67 |                 gHandler.sensor->setFrequency(gHandler.sensor,frequency);
+      |                                                       ^
+../Core/Src/kommunikation/interface_receive_handler.c:68:21: error: request for member 'sender' in something not a structure or union
+   68 |             gHandler.sender->interface.sendFrequency(gHandler.uart3, frequency);
+      |                     ^
+../Core/Src/kommunikation/interface_receive_handler.c:68:62: error: request for member 'uart3' in something not a structure or union
+   68 |             gHandler.sender->interface.sendFrequency(gHandler.uart3, frequency);
+      |                                                              ^
+../Core/Src/kommunikation/interface_receive_handler.c: In function 'calculate_Periode':
+../Core/Src/kommunikation/interface_receive_handler.c:76:35: error: request for member 'htim3' in something not a structure or union
+   76 |         HAL_TIM_Base_Stop(gHandler.htim3);
+      |                                   ^
+../Core/Src/kommunikation/interface_receive_handler.c:79:34: error: request for member 'htim3' in something not a structure or union
+   79 |     uint32_t prescaler = gHandler.htim3->Init.Prescaler;
+      |                                  ^
+../Core/Src/kommunikation/interface_receive_handler.c:88:13: error: request for member 'htim3' in something not a structure or union
+   88 |     gHandler.htim3->Init.Period = periode;
+      |             ^
+../Core/Src/kommunikation/interface_receive_handler.c:91:35: error: request for member 'htim3' in something not a structure or union
+   91 |         HAL_TIM_Base_Init(gHandler.htim3);
+      |                                   ^
+../Core/Src/kommunikation/interface_receive_handler.c:92:35: error: request for member 'htim3' in something not a structure or union
+   92 |     HAL_TIM_Base_Start_IT(gHandler.htim3);
+      |                                   ^
+../Core/Src/kommunikation/interface_receive_handler.c: In function 'handleFreq':
+../Core/Src/kommunikation/interface_receive_handler.c:96:17: error: request for member 'sender' in something not a structure or union
+   96 |         gHandler.sender->interface.sendFrequency(gHandler.uart3, gHandler.sensor->getFrequency(gHandler.sensor));
+      |                 ^
+../Core/Src/kommunikation/interface_receive_handler.c:96:58: error: request for member 'uart3' in something not a structure or union
+   96 |         gHandler.sender->interface.sendFrequency(gHandler.uart3, gHandler.sensor->getFrequency(gHandler.sensor));
+      |                                                          ^
+../Core/Src/kommunikation/interface_receive_handler.c:96:74: error: request for member 'sensor' in something not a structure or union
+   96 |         gHandler.sender->interface.sendFrequency(gHandler.uart3, gHandler.sensor->getFrequency(gHandler.sensor));
+      |                                                                          ^
+../Core/Src/kommunikation/interface_receive_handler.c:96:104: error: request for member 'sensor' in something not a structure or union
+   96 |         gHandler.sender->interface.sendFrequency(gHandler.uart3, gHandler.sensor->getFrequency(gHandler.sensor));
+      |                                                                                                        ^
+../Core/Src/kommunikation/interface_receive_handler.c: In function 'handleCurve':
+../Core/Src/kommunikation/interface_receive_handler.c:100:17: error: request for member 'sender' in something not a structure or union
+  100 |         gHandler.sender->interface.sendCurve(gHandler.uart3, gHandler.sensor->getCurve(gHandler.sensor));
+      |                 ^
+../Core/Src/kommunikation/interface_receive_handler.c:100:54: error: request for member 'uart3' in something not a structure or union
+  100 |         gHandler.sender->interface.sendCurve(gHandler.uart3, gHandler.sensor->getCurve(gHandler.sensor));
+      |                                                      ^
+../Core/Src/kommunikation/interface_receive_handler.c:100:70: error: request for member 'sensor' in something not a structure or union
+  100 |         gHandler.sender->interface.sendCurve(gHandler.uart3, gHandler.sensor->getCurve(gHandler.sensor));
+      |                                                                      ^
+../Core/Src/kommunikation/interface_receive_handler.c:100:96: error: request for member 'sensor' in something not a structure or union
+  100 |         gHandler.sender->interface.sendCurve(gHandler.uart3, gHandler.sensor->getCurve(gHandler.sensor));
+      |                                                                                                ^
+../Core/Src/kommunikation/interface_receive_handler.c: In function 'handleSN':
+../Core/Src/kommunikation/interface_receive_handler.c:104:17: error: request for member 'sender' in something not a structure or union
+  104 |         gHandler.sender->interface.sendSN(gHandler.uart3, gHandler.sensor->getID(gHandler.sensor));
+      |                 ^
+../Core/Src/kommunikation/interface_receive_handler.c:104:51: error: request for member 'uart3' in something not a structure or union
+  104 |         gHandler.sender->interface.sendSN(gHandler.uart3, gHandler.sensor->getID(gHandler.sensor));
+      |                                                   ^
+../Core/Src/kommunikation/interface_receive_handler.c:104:67: error: request for member 'sensor' in something not a structure or union
+  104 |         gHandler.sender->interface.sendSN(gHandler.uart3, gHandler.sensor->getID(gHandler.sensor));
+      |                                                                   ^
+../Core/Src/kommunikation/interface_receive_handler.c:104:90: error: request for member 'sensor' in something not a structure or union
+  104 |         gHandler.sender->interface.sendSN(gHandler.uart3, gHandler.sensor->getID(gHandler.sensor));
+      |                                                                                          ^
+../Core/Src/kommunikation/interface_receive_handler.c: In function 'handleType':
+../Core/Src/kommunikation/interface_receive_handler.c:108:17: error: request for member 'sender' in something not a structure or union
+  108 |         gHandler.sender->interface.sendType(gHandler.uart3, gHandler.sensor->getType(gHandler.sensor));
+      |                 ^
+../Core/Src/kommunikation/interface_receive_handler.c:108:53: error: request for member 'uart3' in something not a structure or union
+  108 |         gHandler.sender->interface.sendType(gHandler.uart3, gHandler.sensor->getType(gHandler.sensor));
+      |                                                     ^
+../Core/Src/kommunikation/interface_receive_handler.c:108:69: error: request for member 'sensor' in something not a structure or union
+  108 |         gHandler.sender->interface.sendType(gHandler.uart3, gHandler.sensor->getType(gHandler.sensor));
+      |                                                                     ^
+../Core/Src/kommunikation/interface_receive_handler.c:108:94: error: request for member 'sensor' in something not a structure or union
+  108 |         gHandler.sender->interface.sendType(gHandler.uart3, gHandler.sensor->getType(gHandler.sensor));
+      |                                                                                              ^
+../Core/Src/kommunikation/interface_receive_handler.c: In function 'handleSetCurve':
+../Core/Src/kommunikation/interface_receive_handler.c:121:15: warning: unused variable 'param' [-Wunused-variable]
+  121 |         float param = 0.0;
+      |               ^~~~~
+../Core/Src/kommunikation/interface_receive_handler.c:146:17: error: request for member 'sensor' in something not a structure or union
+  146 |     if (gHandler.sensor != NULL && gHandler.sensor->setCurve != NULL) {
+      |                 ^
+../Core/Src/kommunikation/interface_receive_handler.c:146:44: error: request for member 'sensor' in something not a structure or union
+  146 |     if (gHandler.sensor != NULL && gHandler.sensor->setCurve != NULL) {
+      |                                            ^
+make: *** [Core/Src/subdir.mk:34: Core/Src/main.o] Error 1
+../Core/Src/kommunikation/interface_receive_handler.c:147:17: error: request for member 'sensor' in something not a structure or union
+  147 |         gHandler.sensor->setCurve(gHandler.sensor, curve);
+      |                 ^
+../Core/Src/kommunikation/interface_receive_handler.c:147:43: error: request for member 'sensor' in something not a structure or union
+  147 |         gHandler.sensor->setCurve(gHandler.sensor, curve);
+      |                                           ^
+make: *** Waiting for unfinished jobs....
+../Core/Src/kommunikation/interface_receive_handler.c: At top level:
+../Core/Src/kommunikation/interface_receive_handler.c:162:30: error: expected declaration specifiers or '...' before 'InterfaceReceiveHandler'
+  162 | void processInterfaceMessage(InterfaceReceiveHandler* handler,uint8_t* receivedData, uint8_t receivedDataIndex){
+      |                              ^~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/kommunikation/interface_receive_handler.c: In function 'createInterfaceReceiveHandler':
+../Core/Src/kommunikation/interface_receive_handler.c:53:1: warning: control reaches end of non-void function [-Wreturn-type]
+   53 | }
+      | ^
+make: *** [Core/Src/kommunikation/subdir.mk:25: Core/Src/kommunikation/interface_receive_handler.o] Error 1
+"make -j16 all" terminated with exit code 2. Build might be incomplete.
+14:17:23 **** Incremental Build of configuration Debug for project sonsor-sw-mc ****
+make -j16 all 
+arm-none-eabi-size   sonsor-sw-mc.elf 
+   text	   data	    bss	    dec	    hex	filename
+  42180	    556	   2292	  45028	   afe4	sonsor-sw-mc.elf
+Finished building: default.size.stdout
+ 
+14:17:31 **** Incremental Build of configuration Debug for project sensor-sw-kc ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/kommunikation/interface_receive_handler.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/kommunikation/interface_receive_handler.d" -MT"Core/Src/kommunikation/interface_receive_handler.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/kommunikation/interface_receive_handler.o"
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+In file included from ../Core/Src/kommunikation/interface_receive_handler.c:9:
+../Core/Inc/kommunikation/interface_receive_handler.h:15:9: error: expected '=', ',', ';', 'asm' or '__attribute__' before string constant
+   15 | include "stm32f3xx_hal_uart.h"
+      |         ^~~~~~~~~~~~~~~~~~~~~~
+../Core/Inc/kommunikation/interface_receive_handler.h:26:3: warning: data definition has no type or storage class
+   26 | } InterfaceReceiveHandler;
+      |   ^~~~~~~~~~~~~~~~~~~~~~~
+../Core/Inc/kommunikation/interface_receive_handler.h:26:3: warning: type defaults to 'int' in declaration of 'InterfaceReceiveHandler' [-Wimplicit-int]
+In file included from ../Core/Src/main.c:25:
+../Core/Inc/kommunikation/interface_receive_handler.h:15:9: error: expected '=', ',', ';', 'asm' or '__attribute__' before string constant
+   15 | include "stm32f3xx_hal_uart.h"
+      |         ^~~~~~~~~~~~~~~~~~~~~~
+../Core/Inc/kommunikation/interface_receive_handler.h:26:3: warning: data definition has no type or storage class
+   26 | } InterfaceReceiveHandler;
+      |   ^~~~~~~~~~~~~~~~~~~~~~~
+../Core/Inc/kommunikation/interface_receive_handler.h:26:3: warning: type defaults to 'int' in declaration of 'InterfaceReceiveHandler' [-Wimplicit-int]
+../Core/Inc/kommunikation/interface_receive_handler.h:29:1: error: unknown type name 'InterfaceReceiveHandler'
+   29 | InterfaceReceiveHandler createInterfaceReceiveHandler(Sensor* sensor,
+      | ^~~~~~~~~~~~~~~~~~~~~~~
+../Core/Inc/kommunikation/interface_receive_handler.h:47:30: error: expected declaration specifiers or '...' before 'InterfaceReceiveHandler'
+   47 | void processInterfaceMessage(InterfaceReceiveHandler* handler,uint8_t* receivedData, uint8_t receivedDataIndex);
+      |                              ^~~~~~~~~~~~~~~~~~~~~~~
+../Core/Inc/kommunikation/interface_receive_handler.h:29:1: error: unknown type name 'InterfaceReceiveHandler'
+   29 | InterfaceReceiveHandler createInterfaceReceiveHandler(Sensor* sensor,
+      | ^~~~~~~~~~~~~~~~~~~~~~~
+../Core/Inc/kommunikation/interface_receive_handler.h:47:30: error: expected declaration specifiers or '...' before 'InterfaceReceiveHandler'
+   47 | void processInterfaceMessage(InterfaceReceiveHandler* handler,uint8_t* receivedData, uint8_t receivedDataIndex);
+      |                              ^~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:55:1: error: unknown type name 'InterfaceReceiveHandler'
+   55 | InterfaceReceiveHandler reciever;
+      | ^~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:129:19: warning: implicit declaration of function 'processInterfaceMessage' [-Wimplicit-function-declaration]
+  129 |                   processInterfaceMessage(&reciever, uartData.data.receivedData, uartData.data.dataIndex);
+      |                   ^~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c: In function 'sendDiameterPeriodic':
+../Core/Src/main.c:275:40: error: 'huart1' undeclared (first use in this function); did you mean 'huart2'?
+  275 |         sender.interface.sendDiameter(&huart1,sensor.getDiameter(&sensor));
+      |                                        ^~~~~~
+      |                                        huart2
+../Core/Src/main.c:275:40: note: each undeclared identifier is reported only once for each function it appears in
+make: *** [Core/Src/subdir.mk:34: Core/Src/main.o] Error 1
+make: *** Waiting for unfinished jobs....
+../Core/Src/kommunikation/interface_receive_handler.c:17:1: error: unknown type name 'InterfaceReceiveHandler'
+   17 | InterfaceReceiveHandler gHandler;
+      | ^~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/kommunikation/interface_receive_handler.c:34:1: error: unknown type name 'InterfaceReceiveHandler'
+   34 | InterfaceReceiveHandler createInterfaceReceiveHandler(Sensor* sensor,
+      | ^~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/kommunikation/interface_receive_handler.c: In function 'createInterfaceReceiveHandler':
+../Core/Src/kommunikation/interface_receive_handler.c:40:5: warning: statement with no effect [-Wunused-value]
+   40 |     InterfaceReceiveHandler handler;
+      |     ^~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/kommunikation/interface_receive_handler.c:40:28: error: expected ';' before 'handler'
+   40 |     InterfaceReceiveHandler handler;
+      |                            ^~~~~~~~
+      |                            ;
+../Core/Src/kommunikation/interface_receive_handler.c:41:5: error: 'handler' undeclared (first use in this function); did you mean 'gHandler'?
+   41 |     handler.sensor = sensor;
+      |     ^~~~~~~
+      |     gHandler
+../Core/Src/kommunikation/interface_receive_handler.c:41:5: note: each undeclared identifier is reported only once for each function it appears in
+../Core/Src/kommunikation/interface_receive_handler.c: In function 'handleFreqChange':
+../Core/Src/kommunikation/interface_receive_handler.c:67:25: error: request for member 'sensor' in something not a structure or union
+   67 |                 gHandler.sensor->setFrequency(gHandler.sensor,frequency);
+      |                         ^
+../Core/Src/kommunikation/interface_receive_handler.c:67:55: error: request for member 'sensor' in something not a structure or union
+   67 |                 gHandler.sensor->setFrequency(gHandler.sensor,frequency);
+      |                                                       ^
+../Core/Src/kommunikation/interface_receive_handler.c:68:21: error: request for member 'sender' in something not a structure or union
+   68 |             gHandler.sender->interface.sendFrequency(gHandler.uart3, frequency);
+      |                     ^
+../Core/Src/kommunikation/interface_receive_handler.c:68:62: error: request for member 'uart3' in something not a structure or union
+   68 |             gHandler.sender->interface.sendFrequency(gHandler.uart3, frequency);
+      |                                                              ^
+../Core/Src/kommunikation/interface_receive_handler.c: In function 'calculate_Periode':
+../Core/Src/kommunikation/interface_receive_handler.c:76:35: error: request for member 'htim3' in something not a structure or union
+   76 |         HAL_TIM_Base_Stop(gHandler.htim3);
+      |                                   ^
+../Core/Src/kommunikation/interface_receive_handler.c:79:34: error: request for member 'htim3' in something not a structure or union
+   79 |     uint32_t prescaler = gHandler.htim3->Init.Prescaler;
+      |                                  ^
+../Core/Src/kommunikation/interface_receive_handler.c:88:13: error: request for member 'htim3' in something not a structure or union
+   88 |     gHandler.htim3->Init.Period = periode;
+      |             ^
+../Core/Src/kommunikation/interface_receive_handler.c:91:35: error: request for member 'htim3' in something not a structure or union
+   91 |         HAL_TIM_Base_Init(gHandler.htim3);
+      |                                   ^
+../Core/Src/kommunikation/interface_receive_handler.c:92:35: error: request for member 'htim3' in something not a structure or union
+   92 |     HAL_TIM_Base_Start_IT(gHandler.htim3);
+      |                                   ^
+../Core/Src/kommunikation/interface_receive_handler.c: In function 'handleFreq':
+../Core/Src/kommunikation/interface_receive_handler.c:96:17: error: request for member 'sender' in something not a structure or union
+   96 |         gHandler.sender->interface.sendFrequency(gHandler.uart3, gHandler.sensor->getFrequency(gHandler.sensor));
+      |                 ^
+../Core/Src/kommunikation/interface_receive_handler.c:96:58: error: request for member 'uart3' in something not a structure or union
+   96 |         gHandler.sender->interface.sendFrequency(gHandler.uart3, gHandler.sensor->getFrequency(gHandler.sensor));
+      |                                                          ^
+../Core/Src/kommunikation/interface_receive_handler.c:96:74: error: request for member 'sensor' in something not a structure or union
+   96 |         gHandler.sender->interface.sendFrequency(gHandler.uart3, gHandler.sensor->getFrequency(gHandler.sensor));
+      |                                                                          ^
+../Core/Src/kommunikation/interface_receive_handler.c:96:104: error: request for member 'sensor' in something not a structure or union
+   96 |         gHandler.sender->interface.sendFrequency(gHandler.uart3, gHandler.sensor->getFrequency(gHandler.sensor));
+      |                                                                                                        ^
+../Core/Src/kommunikation/interface_receive_handler.c: In function 'handleCurve':
+../Core/Src/kommunikation/interface_receive_handler.c:100:17: error: request for member 'sender' in something not a structure or union
+  100 |         gHandler.sender->interface.sendCurve(gHandler.uart3, gHandler.sensor->getCurve(gHandler.sensor));
+      |                 ^
+../Core/Src/kommunikation/interface_receive_handler.c:100:54: error: request for member 'uart3' in something not a structure or union
+  100 |         gHandler.sender->interface.sendCurve(gHandler.uart3, gHandler.sensor->getCurve(gHandler.sensor));
+      |                                                      ^
+../Core/Src/kommunikation/interface_receive_handler.c:100:70: error: request for member 'sensor' in something not a structure or union
+  100 |         gHandler.sender->interface.sendCurve(gHandler.uart3, gHandler.sensor->getCurve(gHandler.sensor));
+      |                                                                      ^
+../Core/Src/kommunikation/interface_receive_handler.c:100:96: error: request for member 'sensor' in something not a structure or union
+  100 |         gHandler.sender->interface.sendCurve(gHandler.uart3, gHandler.sensor->getCurve(gHandler.sensor));
+      |                                                                                                ^
+../Core/Src/kommunikation/interface_receive_handler.c: In function 'handleSN':
+../Core/Src/kommunikation/interface_receive_handler.c:104:17: error: request for member 'sender' in something not a structure or union
+  104 |         gHandler.sender->interface.sendSN(gHandler.uart3, gHandler.sensor->getID(gHandler.sensor));
+      |                 ^
+../Core/Src/kommunikation/interface_receive_handler.c:104:51: error: request for member 'uart3' in something not a structure or union
+  104 |         gHandler.sender->interface.sendSN(gHandler.uart3, gHandler.sensor->getID(gHandler.sensor));
+      |                                                   ^
+../Core/Src/kommunikation/interface_receive_handler.c:104:67: error: request for member 'sensor' in something not a structure or union
+  104 |         gHandler.sender->interface.sendSN(gHandler.uart3, gHandler.sensor->getID(gHandler.sensor));
+      |                                                                   ^
+../Core/Src/kommunikation/interface_receive_handler.c:104:90: error: request for member 'sensor' in something not a structure or union
+  104 |         gHandler.sender->interface.sendSN(gHandler.uart3, gHandler.sensor->getID(gHandler.sensor));
+      |                                                                                          ^
+../Core/Src/kommunikation/interface_receive_handler.c: In function 'handleType':
+../Core/Src/kommunikation/interface_receive_handler.c:108:17: error: request for member 'sender' in something not a structure or union
+  108 |         gHandler.sender->interface.sendType(gHandler.uart3, gHandler.sensor->getType(gHandler.sensor));
+      |                 ^
+../Core/Src/kommunikation/interface_receive_handler.c:108:53: error: request for member 'uart3' in something not a structure or union
+  108 |         gHandler.sender->interface.sendType(gHandler.uart3, gHandler.sensor->getType(gHandler.sensor));
+      |                                                     ^
+../Core/Src/kommunikation/interface_receive_handler.c:108:69: error: request for member 'sensor' in something not a structure or union
+  108 |         gHandler.sender->interface.sendType(gHandler.uart3, gHandler.sensor->getType(gHandler.sensor));
+      |                                                                     ^
+../Core/Src/kommunikation/interface_receive_handler.c:108:94: error: request for member 'sensor' in something not a structure or union
+  108 |         gHandler.sender->interface.sendType(gHandler.uart3, gHandler.sensor->getType(gHandler.sensor));
+      |                                                                                              ^
+../Core/Src/kommunikation/interface_receive_handler.c: In function 'handleSetCurve':
+../Core/Src/kommunikation/interface_receive_handler.c:121:15: warning: unused variable 'param' [-Wunused-variable]
+  121 |         float param = 0.0;
+      |               ^~~~~
+../Core/Src/kommunikation/interface_receive_handler.c:146:17: error: request for member 'sensor' in something not a structure or union
+  146 |     if (gHandler.sensor != NULL && gHandler.sensor->setCurve != NULL) {
+      |                 ^
+../Core/Src/kommunikation/interface_receive_handler.c:146:44: error: request for member 'sensor' in something not a structure or union
+  146 |     if (gHandler.sensor != NULL && gHandler.sensor->setCurve != NULL) {
+      |                                            ^
+../Core/Src/kommunikation/interface_receive_handler.c:147:17: error: request for member 'sensor' in something not a structure or union
+  147 |         gHandler.sensor->setCurve(gHandler.sensor, curve);
+      |                 ^
+../Core/Src/kommunikation/interface_receive_handler.c:147:43: error: request for member 'sensor' in something not a structure or union
+  147 |         gHandler.sensor->setCurve(gHandler.sensor, curve);
+      |                                           ^
+../Core/Src/kommunikation/interface_receive_handler.c: At top level:
+../Core/Src/kommunikation/interface_receive_handler.c:162:30: error: expected declaration specifiers or '...' before 'InterfaceReceiveHandler'
+  162 | void processInterfaceMessage(InterfaceReceiveHandler* handler,uint8_t* receivedData, uint8_t receivedDataIndex){
+      |                              ^~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/kommunikation/interface_receive_handler.c: In function 'createInterfaceReceiveHandler':
+../Core/Src/kommunikation/interface_receive_handler.c:53:1: warning: control reaches end of non-void function [-Wreturn-type]
+   53 | }
+      | ^
+make: *** [Core/Src/kommunikation/subdir.mk:25: Core/Src/kommunikation/interface_receive_handler.o] Error 1
+"make -j16 all" terminated with exit code 2. Build might be incomplete.
+14:17:32 **** Incremental Build of configuration Debug for project sonsor-sw-mc ****
+make -j16 all 
+arm-none-eabi-size   sonsor-sw-mc.elf 
+   text	   data	    bss	    dec	    hex	filename
+  42180	    556	   2292	  45028	   afe4	sonsor-sw-mc.elf
+Finished building: default.size.stdout
+ 
+14:18:05 **** Incremental Build of configuration Debug for project sensor-sw-kc ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/kommunikation/interface_receive_handler.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/kommunikation/interface_receive_handler.d" -MT"Core/Src/kommunikation/interface_receive_handler.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/kommunikation/interface_receive_handler.o"
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'sendDiameterPeriodic':
+../Core/Src/main.c:275:40: error: 'huart1' undeclared (first use in this function); did you mean 'huart2'?
+  275 |         sender.interface.sendDiameter(&huart1,sensor.getDiameter(&sensor));
+      |                                        ^~~~~~
+      |                                        huart2
+../Core/Src/main.c:275:40: note: each undeclared identifier is reported only once for each function it appears in
+make: *** [Core/Src/subdir.mk:34: Core/Src/main.o] Error 1
+make: *** Waiting for unfinished jobs....
+../Core/Src/kommunikation/interface_receive_handler.c: In function 'handleSetCurve':
+../Core/Src/kommunikation/interface_receive_handler.c:121:15: warning: unused variable 'param' [-Wunused-variable]
+  121 |         float param = 0.0;
+      |               ^~~~~
+"make -j16 all" terminated with exit code 2. Build might be incomplete.
+14:18:06 **** Incremental Build of configuration Debug for project sonsor-sw-mc ****
+make -j16 all 
+arm-none-eabi-size   sonsor-sw-mc.elf 
+   text	   data	    bss	    dec	    hex	filename
+  42180	    556	   2292	  45028	   afe4	sonsor-sw-mc.elf
+Finished building: default.size.stdout
+ 
+14:18:24 **** Incremental Build of configuration Debug for project sensor-sw-kc ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "sensor-sw-kc.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Studium_MSI\Workspace_ES\sensor\sensor-sw-kc\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="sensor-sw-kc.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+C:/ST/STM32CubeIDE_1.13.2/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.11.3.rel1.win32_1.1.1.202309131626/tools/bin/../lib/gcc/arm-none-eabi/11.3.1/../../../../arm-none-eabi/bin/ld.exe: ./Core/Src/stm32f3xx_it.o: in function `TIM3_IRQHandler':
+C:/Studium_MSI/Workspace_ES/sensor/sensor-sw-kc/Debug/../Core/Src/stm32f3xx_it.c:206: multiple definition of `TIM3_IRQHandler'; ./Core/Src/main.o:C:/Studium_MSI/Workspace_ES/sensor/sensor-sw-kc/Debug/../Core/Src/main.c:279: first defined here
+collect2.exe: error: ld returned 1 exit status
+make: *** [makefile:66: sensor-sw-kc.elf] Error 1
+"make -j16 all" terminated with exit code 2. Build might be incomplete.
+14:18:25 **** Incremental Build of configuration Debug for project sonsor-sw-mc ****
+make -j16 all 
+arm-none-eabi-size   sonsor-sw-mc.elf 
+   text	   data	    bss	    dec	    hex	filename
+  42180	    556	   2292	  45028	   afe4	sonsor-sw-mc.elf
+Finished building: default.size.stdout
+ 
+14:18:44 **** Incremental Build of configuration Debug for project sensor-sw-kc ****
+make -j16 all 
+arm-none-eabi-gcc -o "sensor-sw-kc.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Studium_MSI\Workspace_ES\sensor\sensor-sw-kc\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="sensor-sw-kc.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+C:/ST/STM32CubeIDE_1.13.2/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.11.3.rel1.win32_1.1.1.202309131626/tools/bin/../lib/gcc/arm-none-eabi/11.3.1/../../../../arm-none-eabi/bin/ld.exe: ./Core/Src/stm32f3xx_it.o: in function `TIM3_IRQHandler':
+C:/Studium_MSI/Workspace_ES/sensor/sensor-sw-kc/Debug/../Core/Src/stm32f3xx_it.c:206: multiple definition of `TIM3_IRQHandler'; ./Core/Src/main.o:C:/Studium_MSI/Workspace_ES/sensor/sensor-sw-kc/Debug/../Core/Src/main.c:279: first defined here
+collect2.exe: error: ld returned 1 exit status
+make: *** [makefile:66: sensor-sw-kc.elf] Error 1
+"make -j16 all" terminated with exit code 2. Build might be incomplete.
+14:18:44 **** Incremental Build of configuration Debug for project sonsor-sw-mc ****
+make -j16 all 
+arm-none-eabi-size   sonsor-sw-mc.elf 
+   text	   data	    bss	    dec	    hex	filename
+  42180	    556	   2292	  45028	   afe4	sonsor-sw-mc.elf
+Finished building: default.size.stdout
+ 
+14:18:56 **** Incremental Build of configuration Debug for project sensor-sw-kc ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/stm32f3xx_it.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/stm32f3xx_it.d" -MT"Core/Src/stm32f3xx_it.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/stm32f3xx_it.o"
+arm-none-eabi-gcc -o "sensor-sw-kc.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Studium_MSI\Workspace_ES\sensor\sensor-sw-kc\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="sensor-sw-kc.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: sensor-sw-kc.elf
+ 
+arm-none-eabi-size   sensor-sw-kc.elf 
+arm-none-eabi-objdump -h -S  sensor-sw-kc.elf  > "sensor-sw-kc.list"
+   text	   data	    bss	    dec	    hex	filename
+  44956	    556	   2364	  47876	   bb04	sensor-sw-kc.elf
+Finished building: default.size.stdout
+ 
+Finished building: sensor-sw-kc.list
+ 
+14:18:57 **** Incremental Build of configuration Debug for project sonsor-sw-mc ****
+make -j16 all 
+arm-none-eabi-size   sonsor-sw-mc.elf 
+   text	   data	    bss	    dec	    hex	filename
+  42180	    556	   2292	  45028	   afe4	sonsor-sw-mc.elf
+Finished building: default.size.stdout
+ 
+14:35:13 **** Incremental Build of configuration Debug for project sonsor-sw-mc ****
+make -j16 all 
+arm-none-eabi-size   sonsor-sw-mc.elf 
+   text	   data	    bss	    dec	    hex	filename
+  42180	    556	   2292	  45028	   afe4	sonsor-sw-mc.elf
+Finished building: default.size.stdout
+ 
+14:37:24 **** Incremental Build of configuration Debug for project sensor-sw-kc ****
+make -j16 all 
+arm-none-eabi-size   sensor-sw-kc.elf 
+   text	   data	    bss	    dec	    hex	filename
+  44956	    556	   2364	  47876	   bb04	sensor-sw-kc.elf
+Finished building: default.size.stdout
+ 
+14:40:27 **** Incremental Build of configuration Debug for project sensor-sw-kc ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "sensor-sw-kc.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Studium_MSI\Workspace_ES\sensor\sensor-sw-kc\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="sensor-sw-kc.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: sensor-sw-kc.elf
+ 
+arm-none-eabi-size   sensor-sw-kc.elf 
+arm-none-eabi-objdump -h -S  sensor-sw-kc.elf  > "sensor-sw-kc.list"
+   text	   data	    bss	    dec	    hex	filename
+  44948	    556	   2364	  47868	   bafc	sensor-sw-kc.elf
+Finished building: default.size.stdout
+ 
+Finished building: sensor-sw-kc.list
+ 
+14:45:23 **** Incremental Build of configuration Debug for project sensor-sw-kc ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc "../Core/Src/stm32f3xx_it.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/stm32f3xx_it.d" -MT"Core/Src/stm32f3xx_it.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/stm32f3xx_it.o"
+arm-none-eabi-gcc -o "sensor-sw-kc.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Studium_MSI\Workspace_ES\sensor\sensor-sw-kc\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="sensor-sw-kc.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+C:/ST/STM32CubeIDE_1.13.2/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.11.3.rel1.win32_1.1.1.202309131626/tools/bin/../lib/gcc/arm-none-eabi/11.3.1/../../../../arm-none-eabi/bin/ld.exe: ./Core/Src/stm32f3xx_it.o: in function `TIM3_IRQHandler':
+C:/Studium_MSI/Workspace_ES/sensor/sensor-sw-kc/Debug/../Core/Src/stm32f3xx_it.c:206: multiple definition of `TIM3_IRQHandler'; ./Core/Src/main.o:C:/Studium_MSI/Workspace_ES/sensor/sensor-sw-kc/Debug/../Core/Src/main.c:279: first defined here
+collect2.exe: error: ld returned 1 exit status
+make: *** [makefile:66: sensor-sw-kc.elf] Error 1
+"make -j16 all" terminated with exit code 2. Build might be incomplete.
+14:45:35 **** Incremental Build of configuration Debug for project sensor-sw-kc ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/stm32f3xx_it.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/stm32f3xx_it.d" -MT"Core/Src/stm32f3xx_it.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/stm32f3xx_it.o"
+arm-none-eabi-gcc -o "sensor-sw-kc.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Studium_MSI\Workspace_ES\sensor\sensor-sw-kc\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="sensor-sw-kc.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: sensor-sw-kc.elf
+ 
+arm-none-eabi-size   sensor-sw-kc.elf 
+arm-none-eabi-objdump -h -S  sensor-sw-kc.elf  > "sensor-sw-kc.list"
+   text	   data	    bss	    dec	    hex	filename
+  44948	    556	   2364	  47868	   bafc	sensor-sw-kc.elf
+Finished building: default.size.stdout
+ 
+Finished building: sensor-sw-kc.list
+ 
+14:46:37 **** Incremental Build of configuration Debug for project sensor-sw-kc ****
+make -j16 all 
+arm-none-eabi-size   sensor-sw-kc.elf 
+   text	   data	    bss	    dec	    hex	filename
+  44948	    556	   2364	  47868	   bafc	sensor-sw-kc.elf
+Finished building: default.size.stdout
+ 
+14:48:37 **** Incremental Build of configuration Debug for project sensor-sw-kc ****
+make -j16 all 
+arm-none-eabi-size   sensor-sw-kc.elf 
+   text	   data	    bss	    dec	    hex	filename
+  44948	    556	   2364	  47868	   bafc	sensor-sw-kc.elf
+Finished building: default.size.stdout
+ 
+14:55:52 **** Incremental Build of configuration Debug for project sensor-sw-kc ****
+make -j16 all 
+arm-none-eabi-size   sensor-sw-kc.elf 
+   text	   data	    bss	    dec	    hex	filename
+  44948	    556	   2364	  47868	   bafc	sensor-sw-kc.elf
+Finished building: default.size.stdout
+ 
+14:56:19 **** Incremental Build of configuration Debug for project sensor-sw-kc ****
+make -j16 all 
+arm-none-eabi-size   sensor-sw-kc.elf 
+   text	   data	    bss	    dec	    hex	filename
+  44948	    556	   2364	  47868	   bafc	sensor-sw-kc.elf
+Finished building: default.size.stdout
+ 
+14:57:29 **** Incremental Build of configuration Debug for project sensor-sw-kc ****
+make -j16 all 
+arm-none-eabi-size   sensor-sw-kc.elf 
+   text	   data	    bss	    dec	    hex	filename
+  44948	    556	   2364	  47868	   bafc	sensor-sw-kc.elf
+Finished building: default.size.stdout
+ 

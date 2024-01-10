@@ -1,0 +1,12 @@
+../Core/Src/kommunikation/interface_receive_handler.c:34:25:createInterfaceReceiveHandler	1
+../Core/Src/kommunikation/interface_receive_handler.c:56:6:handleFreqChange	3
+../Core/Src/kommunikation/interface_receive_handler.c:72:6:calculate_Periode	4
+../Core/Src/kommunikation/interface_receive_handler.c:95:6:handleFreq	1
+../Core/Src/kommunikation/interface_receive_handler.c:99:6:handleCurve	1
+../Core/Src/kommunikation/interface_receive_handler.c:103:6:handleSN	1
+../Core/Src/kommunikation/interface_receive_handler.c:107:6:handleType	1
+../Core/Src/kommunikation/interface_receive_handler.c:111:6:handleSetCurve	12
+../Core/Src/kommunikation/interface_receive_handler.c:151:6:handleCalReset	1
+../Core/Src/kommunikation/interface_receive_handler.c:155:6:handleAddCalValue	1
+../Core/Src/kommunikation/interface_receive_handler.c:158:6:handleCalEnd	1
+../Core/Src/kommunikation/interface_receive_handler.c:162:6:processInterfaceMessage	1

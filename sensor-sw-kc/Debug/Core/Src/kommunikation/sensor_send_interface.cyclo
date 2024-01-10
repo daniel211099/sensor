@@ -1,0 +1,6 @@
+../Core/Src/kommunikation/sensor_send_interface.c:15:6:sendDiameter_impl	1
+../Core/Src/kommunikation/sensor_send_interface.c:27:6:sendFrequency_impl	1
+../Core/Src/kommunikation/sensor_send_interface.c:39:6:sendCurve_impl	2
+../Core/Src/kommunikation/sensor_send_interface.c:52:6:sendSN_impl	1
+../Core/Src/kommunikation/sensor_send_interface.c:63:6:sendType_impl	1
+../Core/Src/kommunikation/sensor_send_interface.c:78:19:createSendHandler	1

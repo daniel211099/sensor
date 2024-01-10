@@ -1,0 +1,164 @@
+/*
+ * interface_receive_handler.c
+ *
+ *  Created on: Nov 29, 2023
+ *      Author: danie
+ */
+
+
+#include "kommunikation/interface_receive_handler.h"
+#include "kommunikation/sensor_send_interface.h"
+#include <kommunikation/uart_processor.h>
+#include <math.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+InterfaceReceiveHandler gHandler;
+
+CommandEntry interface_dictionary[] = {
+		{"?freq",      handleFreq},
+        {"?curve",     handleCurve},
+        {"?sn",        handleSN},
+        {"?type",      handleType},
+    	{"!freq",      handleFreqChange},
+		{"!curve",     handleSetCurve},
+		{"!cal reset", handleCalReset},
+		{"!cal",       handleAddCalValue},
+		{"!cal end",   handleCalEnd},
+        {NULL, NULL}
+};
+
+
+// Konstruktor
+InterfaceReceiveHandler createInterfaceReceiveHandler(Sensor* sensor,
+			                                          SensorSendHandler* sender,
+		                                              UART_HandleTypeDef* uart2,
+													  UART_HandleTypeDef* uart3,
+													  TIM_HandleTypeDef* htim3)
+{
+    InterfaceReceiveHandler handler;
+    handler.sensor = sensor;
+    handler.sender = sender;
+    handler.uart2  = uart2;
+    handler.uart3  = uart3;
+    handler.htim3  = htim3;
+
+
+    // Zuweisung der globalen Variable
+    gHandler = handler;
+
+    handler.uartProcessor = createUartProcessor(interface_dictionary);
+    return handler;
+}
+
+// Methoden
+void handleFreqChange(const char* value) {
+    // Find position of 'Q' in the string
+    char* qPosition = strchr(value, 'Q');
+
+    if (qPosition != NULL) {
+        qPosition++;
+        // Use sscanf to extract the float value
+        float frequency;
+        if (sscanf(qPosition, "%f", &frequency) == 1) {
+            // Set the new timer frequency
+        	calculate_Periode(frequency);
+        	gHandler.sensor->setFrequency(gHandler.sensor,frequency);
+            gHandler.sender->interface.sendFrequency(gHandler.uart3, frequency);
+        }
+    }
+}
+void calculate_Periode(float f) {
+	if(f < 1 || f > 2000)
+		return; // Frequenz außerhalb des zulässigen Bereiches
+
+	HAL_TIM_Base_Stop(gHandler.htim3);
+    // Grundfrequenz des TIM3-Timers
+    uint32_t tim3Grundfrequenz = HAL_RCC_GetSysClockFreq();
+    uint32_t prescaler = gHandler.htim3->Init.Prescaler;
+    // Berechnung der Periode
+    uint32_t periode = (tim3Grundfrequenz / (prescaler * f)) - 1;
+
+    // Überprüfung, ob die Periode im gültigen Bereich liegt
+    if (periode > 0xFFFF) {
+        // Periode ist zu groß, setze den Maximalwert
+        periode = 0xFFFF;
+    }
+    gHandler.htim3->Init.Period = periode;
+
+    //init_Timer(periode);
+	HAL_TIM_Base_Init(gHandler.htim3);
+    HAL_TIM_Base_Start_IT(gHandler.htim3);
+}
+
+void handleFreq(const char* value) {
+	gHandler.sender->interface.sendFrequency(gHandler.uart3, gHandler.sensor->getFrequency(gHandler.sensor));
+}
+
+void handleCurve(const char* params) {
+	gHandler.sender->interface.sendCurve(gHandler.uart3, gHandler.sensor->getCurve(gHandler.sensor));
+}
+
+void handleSN(const char* sn) {
+	gHandler.sender->interface.sendSN(gHandler.uart3, gHandler.sensor->getID(gHandler.sensor));
+}
+
+void handleType(const char* value) {
+	gHandler.sender->interface.sendType(gHandler.uart3, gHandler.sensor->getType(gHandler.sensor));
+}
+
+void handleSetCurve(const char *value) {
+    int length = strlen(value);
+    char *result = (char *)malloc(length + 1);  // +1 für das Nullzeichen am Ende
+    if (result == NULL) {
+        exit(EXIT_FAILURE); // Es konnte kein speicher allokiert werden
+    }
+    int i = 0;
+    int index = 0;
+    float curve[5];
+    while(i < 5 && index < length){
+        float param = 0.0;
+        int startIndex = -1;  // Index des ersten Leerzeichens
+        int endIndex = -1;    // Index des zweiten Leerzeichens
+
+        for (int j = index; j < length; j++) {
+            if (value[j] == ' ' || value[j] == '\r') {
+                if (startIndex == -1) {
+                    startIndex = j + 1;
+                } else {
+                    endIndex = j;
+                    index = j;
+                    break;
+                }
+            }
+        }
+
+        if (startIndex != -1 && endIndex != -1 && startIndex < endIndex) {
+            // Kopiere den Teil der Zeichenkette zwischen den beiden Leerzeichen
+            strncpy(result, value + startIndex, endIndex - startIndex);
+            result[endIndex - startIndex] = '\0';  // Nullzeichen am Ende hinzufügen
+            curve[i] = strtof(result, NULL);
+            i++;
+        }
+    }
+
+    if (gHandler.sensor != NULL && gHandler.sensor->setCurve != NULL) {
+        gHandler.sensor->setCurve(gHandler.sensor, curve);
+    }
+}
+
+void handleCalReset(){
+	// Wird diese Funktion aufgerufen startet die Calibration sequence
+	// TODO: Implement calibration sequence
+}
+void handleAddCalValue(const char* value){
+	// Neue True Diameter wert wurde übertragen
+}
+void handleCalEnd(){
+	// Flag -> Calibration sequence end
+}
+
+void processInterfaceMessage(InterfaceReceiveHandler* handler,uint8_t* receivedData, uint8_t receivedDataIndex){
+	processCommand(&(handler->uartProcessor), receivedData, receivedDataIndex);
+}

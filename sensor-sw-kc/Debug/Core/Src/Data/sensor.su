@@ -1,0 +1,11 @@
+../Core/Src/Data/sensor.c:13:7:getDiameter	16	static
+../Core/Src/Data/sensor.c:17:7:getFrequency	16	static
+../Core/Src/Data/sensor.c:21:14:getCurve	16	static
+../Core/Src/Data/sensor.c:25:5:getID	16	static
+../Core/Src/Data/sensor.c:29:13:getType	16	static
+../Core/Src/Data/sensor.c:34:6:setDiameter	16	static
+../Core/Src/Data/sensor.c:38:6:setFrequency	16	static
+../Core/Src/Data/sensor.c:42:6:setCurve	24	static
+../Core/Src/Data/sensor.c:48:6:setID	16	static
+../Core/Src/Data/sensor.c:52:6:setType	16	static
+../Core/Src/Data/sensor.c:57:8:initSensor	112	static

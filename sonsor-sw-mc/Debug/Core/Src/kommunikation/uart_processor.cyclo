@@ -1,0 +1,3 @@
+../Core/Src/kommunikation/uart_processor.c:15:15:createUartProcessor	1
+../Core/Src/kommunikation/uart_processor.c:22:5:strncasecmp	5
+../Core/Src/kommunikation/uart_processor.c:33:6:processCommand	3

@@ -1,0 +1,7 @@
+../Core/Src/Data/uart_data.c:12:16:getReceivedData	1
+../Core/Src/Data/uart_data.c:16:5:getDataIndex	1
+../Core/Src/Data/uart_data.c:20:5:getMessageComplete	1
+../Core/Src/Data/uart_data.c:25:6:setReceivedData	2
+../Core/Src/Data/uart_data.c:32:6:setDataIndex	1
+../Core/Src/Data/uart_data.c:36:6:setMessageComplete	1
+../Core/Src/Data/uart_data.c:41:16:createUartDataObject	2

@@ -1,0 +1,51 @@
+/*
+ * interface_receive_handler.h
+ *
+ *  Created on: Nov 29, 2023
+ *      Author: Daniel Alf
+ */
+
+#ifndef INC_KOMMUNIKATION_INTERFACE_RECEIVE_HANDLER_H_
+#define INC_KOMMUNIKATION_INTERFACE_RECEIVE_HANDLER_H_
+
+#include "Data/sensor.h"
+#include "kommunikation/sensor_send_interface.h"
+#include "kommunikation/uart_processor.h"
+#include "stm32f3xx_hal.h"
+#include "stm32f3xx_hal_uart.h"
+//#include "stm32f4xx_hal.h"
+//#include "stm32f4xx_hal_uart.h"
+
+typedef struct {
+    Sensor* sensor;  // Pointer auf den Sensor
+    SensorSendHandler* sender;
+    UartProcessor uartProcessor;
+    UART_HandleTypeDef* uart2;  // Externer Zugriff auf UART
+    UART_HandleTypeDef* uart3;  // Externer Zugriff auf UART
+    TIM_HandleTypeDef* htim3;    // Extermem Zugriff auf Timer
+} InterfaceReceiveHandler;
+
+// Konstruktor
+InterfaceReceiveHandler createInterfaceReceiveHandler(Sensor* sensor,
+			                                          SensorSendHandler* sender,
+		                                              UART_HandleTypeDef* uart2,
+													  UART_HandleTypeDef* uart3,
+													  TIM_HandleTypeDef* htim3);
+
+// Methoden
+void handleFreqChange(const char* value);
+void handleFreq(const char* value);
+void handleCurve(const char* params);
+void handleSN(const char* sn);
+void handleType(const char* value);
+void handleSetCurve(const char* value);
+void handleCalReset();
+void handleAddCalValue(const char* value);
+void handleCalEnd();
+
+
+void processInterfaceMessage(InterfaceReceiveHandler* handler,uint8_t* receivedData, uint8_t receivedDataIndex);
+void calculate_Periode(float f);
+
+
+#endif /* INC_KOMMUNIKATION_INTERFACE_RECEIVE_HANDLER_H_ */
